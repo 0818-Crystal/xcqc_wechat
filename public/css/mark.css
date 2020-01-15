@@ -1,0 +1,52 @@
+.store {
+  border-radius: 20px;
+  background-color: #fa3c71;
+  box-shadow: 10px 10px 20px #c5c4c457;
+
+  position: absolute;
+  margin-left: 3em;
+  justify-content: center;
+}
+.mark_menu {
+  flex-direction: column;
+}
+
+.mark_intro {
+  margin-top: 5px;
+  display: block;
+  color: grey;
+  font-size: 0.8em;
+}
+.mark_title {
+  font-weight: 600;
+  font-size: 2em;
+}
+.mark_item {
+  background-color: #fff;
+  padding: 3em;
+  margin: 2em;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px #c5c4c457;
+}
+.mark_button {
+  float: right;
+  background-color: #fa3c71;
+  padding: 10px;
+  font-size: 0.8em;
+  color: white;
+  border-radius: 16px;
+}
+.Bar {
+  height: 4px;
+  border-radius: 3px;
+  width: 5em;
+  background-color: #c5c4c4;
+}
+.Bar_in {
+  background-color: #fa3c71;
+}
+.current_mark {
+  /* float: right; */
+  margin-top: 1em;
+  font-size: 0.8em;
+}

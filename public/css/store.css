@@ -1,0 +1,104 @@
+.my_slider {
+  background-color: #f7f7f7;
+}
+.bx_viewport {
+  width: 30%;
+}
+.bx-wrapper {
+  background-color: transparent;
+  border: 0px;
+  box-shadow: 0 0 transparent;
+}
+li {
+  padding: 3em;
+}
+.recommend {
+  font-size: 1.2em;
+  font-weight: 600;
+  font-family: "楷体";
+  line-height: 5em;
+}
+.title {
+  font-weight: 700;
+  font-size: 1.5em;
+  font-family: "楷体";
+}
+.intro {
+  font-weight: 400;
+  font-size: 1em;
+  font-family: "楷体";
+}
+.price {
+  font-family: "楷体";
+}
+.recommend_intro {
+  padding-top: 3em;
+}
+
+.button_change {
+  background: #fa3c71;
+  color: #fff;
+  border: transparent;
+  border-radius: 20px;
+  width: 5em;
+}
+.navbar {
+  margin-bottom: 0;
+}
+.navbar-default {
+  background-color: #ce2b62;
+}
+
+.navbar-link {
+  float: right;
+  padding: 15px;
+}
+
+#backGround {
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 11000px;
+  background-color: black;
+  z-index: 1;
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+  filter: alpha(opacity=88);
+}
+#choiceWindow {
+  display: none;
+
+  position: fixed;
+  top: 25%;
+  left: 10%;
+  width: 80%;
+  height: 300px;
+  padding: 20px;
+  border: 3px solid #f3ebcc;
+  background-color: #f3ebcc;
+  z-index: 2;
+  overflow: auto;
+}
+input {
+  border-radius: 5px;
+  border: 1px solid black;
+  margin-top: 30px;
+}
+.submit {
+  background-color: #fa3c71;
+  height: 30px;
+  width: 100px;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  margin-left: 30%;
+}
+.input {
+  margin-left: 10%;
+}
+#x:hover {
+  cursor: pointer;
+  color: rgb(55, 198, 192);
+}

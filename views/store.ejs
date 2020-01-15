@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>积分商城</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+
+    <link
+      href="https://cdn.bootcss.com/bxslider/4.2.15/jquery.bxslider.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/my.css" />
+
+    <link rel="stylesheet" href="/css/store.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a
+            class="navbar-brand usefulmarks"
+            href="#"
+            style="color: #fff;font-size: 13px;"
+            >可用积分:<%=marks.usefulNum%>
+          </a>
+          <a
+            href="http://xqcj.doublehh.cn/history"
+            class="navbar-link"
+            style="color: #fff;"
+            >历史兑换</a
+          >
+        </div>
+      </div>
+    </nav>
+    <div class="my_slider">
+      <span
+        class="glyphicon glyphicon-star"
+        aria-hidden="true"
+        style="color: #fa3c71;font-size: 1.5em;margin-left: 2.5em;"
+      ></span>
+      <text class="recommend">
+        推荐商品：
+      </text>
+      <ul id="marquee">
+        <%goodsData.forEach(function(item){ %> <% if ( item.goodsRecommend ==
+        "1"&&item.goodsState == "1" && item.goodsRestNum > 0 ) { %>
+        <li>
+          <img
+            src="<%=item.goodsImg%>"
+            alt="banner_1"
+            style="margin-left: auto;margin-right: auto;height: 100px;"
+          />
+          <div class="recommend_intro">
+            <div>
+              <text class="title">
+                <%= item.goodsName %>
+              </text>
+            </div>
+            <div>
+              <text class="intro">
+                <%= item.goodsInfo %>
+              </text>
+            </div>
+            <div>
+              <text class="price">积分： <%= item.goodsPrice %> </text>
+              <button
+                style="float:right;"
+                class="button_change"
+                id="<%=item.id%>"
+              >
+                兑换
+              </button>
+            </div>
+          </div>
+        </li>
+        <%}})%>
+      </ul>
+    </div>
+    <div>
+      <span
+        class="glyphicon glyphicon-shopping-cart"
+        aria-hidden="true"
+        style="color: #fa3c71;font-size: 1.5em;margin-left: 2.5em;"
+      ></span>
+      <text
+        style='font-size: 1.2em;
+      font-weight: 600;
+      font-family: "楷体";'
+      >
+        全部商品：
+      </text>
+      <div class="menu">
+        <%goodsData.forEach(function(item){ if ( item.goodsState == "1" &&
+        item.goodsRestNum > 0 ) { %>
+        <div
+          class="menu-list"
+          style="flex:100%;padding:3em;border: #fa3c71 1px solid;"
+        >
+          <img src="<%=item.goodsImg%>" style="max-width:100%;height: 80px;" />
+          <div class="recommend_intro">
+            <div>
+              <text class="title">
+                <%=item.goodsName%>
+              </text>
+            </div>
+            <div>
+              <text class="intro">
+                <%= item.goodsInfo %>
+              </text>
+            </div>
+            <div>
+              <text class="price">积分： <%= item.goodsPrice %> </text>
+
+              <button
+                style="float:right;"
+                class="button_change"
+                id="<%=item.id%>"
+              >
+                兑换
+              </button>
+            </div>
+          </div>
+        </div>
+        <%}})%> <%goodsData.forEach(function(item){ if ( item.goodsState != "1"
+        || item.goodsRestNum <= 0 ) { %>
+        <div
+          class="menu-list"
+          style="flex:100%;padding:3em;border: #fa3c71 1px solid;"
+        >
+          <img src="<%=item.goodsImg%>" style="max-width:100%;height: 80px;" />
+          <div class="recommend_intro">
+            <div>
+              <text class="title">
+                <%=item.goodsName%>
+              </text>
+            </div>
+            <div>
+              <text class="intro">
+                <%= item.goodsInfo %>
+              </text>
+            </div>
+            <div>
+              <text class="price">积分： <%= item.goodsPrice %> </text>
+
+              <button
+                style="float:right;background: grey; color: #fff;border: transparent;border-radius: 20px;width: 5em;"
+                disabled="disabled"
+              >
+                待上架
+              </button>
+            </div>
+          </div>
+        </div>
+        <%}})%>
+      </div>
+    </div>
+    <div id="choiceWindow">
+      <label
+        id="x"
+        style="position: absolute;top:2px;left: 95%;font-size: 25px;"
+        >x
+      </label>
+      <label>请输入以下信息：</label>&nbsp; &nbsp; &nbsp;<br />
+
+      <div class="input">
+        姓名：<input type="text" name="realname" class="input" /><br />
+        电话：<input type="text" name="phonenumber" class="input" /><br />
+
+        <br /><br />
+      </div>
+      <button class="submit">提交</button>
+    </div>
+    <div id="backGround"></div>
+    <script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bxslider/4.2.15/jquery.bxslider.js"></script>
+    <script src="/js/store.js"></script>
+
+    <script>
+      $(function() {
+        var index = 0;
+        var rea = "<%=(UserInfo.realName)%>";
+        $("#marquee").bxSlider({
+          mode: "horizontal", //默认的是水平
+          displaySlideQty: 2, //显示li的个数
+          moveSlideQty: 1, //移动li的个数
+          captions: true, //自动控制
+          auto: true,
+          easing: "swing",
+          responsive: true,
+          controls: false //隐藏左右按钮
+        });
+        $(".button_change").on("tap", function() {
+          index = $(this).attr("id");
+          console.log(index);
+          if (rea == null || rea == "") {
+            $("#choiceWindow").slideDown(300);
+            $("#backGround").show();
+            $("body").css("overflow", "hidden");
+          } else {
+            exchange(index);
+          }
+        });
+        $(".submit").on("tap", function() {
+          hassubmit();
+          exchange(index);
+          $("#choiceWindow").slideUp(300);
+          $("#backGround").hide();
+          $("body").css("overflow", "auto");
+        });
+        function hassubmit() {
+          var name = $("input[ name='realname' ]").val();
+          var pn = $("input[ name='phonenumber' ]").val();
+
+          $.ajax({
+            type: "POST",
+            url: "http://203.195.230.234:8080/user",
+            // post payload:
+            data: JSON.stringify({
+              openId: "<%=UserInfo.openId%>",
+              phoneNumber: pn,
+              realName: name
+            }),
+            contentType: "application/json",
+            success: function(data) {
+              console.log(data);
+            },
+            error: function(xhr, type, error) {
+              console.log(error);
+            }
+          });
+        }
+        function exchange(index) {
+          $.ajax({
+            type: "POST",
+            url: "http://203.195.230.234:8080/user-exchange",
+            // post payload:
+            data: JSON.stringify({
+              openId: "<%=UserInfo.openId%>",
+              goodsId: index
+            }),
+            contentType: "application/json",
+            success: function(data) {
+              console.log(data);
+              if (data.resultBody != null) {
+                alert("兑换成功");
+                $(".usefulmarks").html(`可用积分为${data.resultBody}`);
+              } else alert(data.errorMsg);
+            },
+            error: function(xhr, type, error) {
+              console.log(error);
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

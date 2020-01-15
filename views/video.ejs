@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title><%=type%></title>
+    <link rel="stylesheet" href="/css/list.css" />
+  </head>
+  <body>
+    <div class="list_menu"></div>
+    <script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+    <script>
+      $.ajax({
+        type: "GET",
+        url:
+          "http://203.195.230.234:8080/essay/getEssayByType?essayType=<%=type%>&orderBy=Asc",
+
+        success: function(data, status, xhr) {
+          data = JSON.parse(data).resultBody;
+
+          var content = "";
+          data.forEach((item, index) => {
+            content +=
+              "  <a href=" +
+              item.essayUrl +
+              ">\n" +
+              '  <div class="list_item">\n' +
+              '    <div class="index">\n' +
+              '      <text class="list_index">' +
+              (index + 1) +
+              "</text>\n" +
+              "   </div>\n" +
+              '    <text class="list_title">' +
+              item.essayTitle +
+              "</text>\n" +
+              "  </div></a>";
+          });
+          $(".list_menu").html(content);
+        },
+        error: function(xhr, type) {
+          alert("Ajax error!");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>邀请好友得积分</title>
+  </head>
+  <body>
+    <div style="margin-top: 1em;background-color: #fff; ">
+      <text
+        style="font-size: 14rpx;font-weight: 600;font-family: '黑体';margin-top: 1em;margin-left:3em ;"
+        >您的邀请码:<br
+      /></text>
+      <div
+        style="margin: 3em;margin-top: 1em;background: #fa3c71; border-radius: 25px;
+        box-shadow: 10px 10px 20px #c5c4c457;color: white;padding: 1em;"
+      >
+        <text style="font-weight: 400;font-family: '黑体';margin-top: 1em ;">
+          邀请人：<%=inviteCode%>
+        </text>
+      </div>
+    </div>
+    <div style="margin-top: 1em;background-color: #fff; ">
+      <text
+        style="font-size: 14rpx;font-weight: 600;font-family: '黑体';margin-top: 1em;margin-left:3em ;"
+        >邀请规则：<br
+      /></text>
+      <div
+        style="margin: 3em;margin-top: 1em;background: #fa3c71; border-radius: 25px;
+        box-shadow: 10px 10px 20px #c5c4c457;color: white;padding: 1em;"
+      >
+        <text style="font-weight: 400;font-family: '黑体';margin-top: 1em ;">
+          邀请好友关注新碶成教公众号，回复后台上方邀请格式（邀请人：您的邀请码），邀请成功一位好友便可以获得1分，一天之内邀请达到10人，即可再获得5分；
+        </text>
+      </div>
+    </div>
+    <div style="margin-top: 1em;background-color: #fff; ">
+      <text
+        style="font-size: 14rpx;font-weight: 600;font-family: '黑体';margin-top: 1em;margin-left:3em ;"
+        >已邀请人数：<br
+      /></text>
+      <div
+        style="margin: 3em;margin-top: 1em;background: #fa3c71; border-radius: 25px;
+        box-shadow: 10px 10px 20px #c5c4c457;color: white;padding: 1em;"
+      >
+        <text style="font-weight: 400;font-family: '黑体';margin-top: 1em ;">
+          到目前为止，您已邀请<%=inviteNum%>人加入新碶成教大家庭！
+        </text>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title><%=type%></title>
+    <link rel="stylesheet" href="/css/list.css" />
+  </head>
+  <body>
+    <div class="list_menu"></div>
+    <script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+    <script>
+      const apiurl = "http://203.195.230.234:8080";
+      var videos = [
+        { type: "烘焙教学", id: 74 },
+        { type: "五分钟理疗", id: 75 },
+        { type: "减压睡眠", id: 76 },
+        { type: "非遗文化", id: 77 }
+      ];
+      var url = `${apiurl}/essay/getEssayByType?essayType=<%=type%>&orderBy=Asc`;
+      videos.map((item, index) => {
+        if ("<%=type%>" == item.type)
+          url = `${apiurl}/video-class?filter=%7B'video_type'%3A${item.id}%7D&range=%5B1%2C100%5D&sort=%5B'id'%2C'DESC'%5D`;
+      });
+      $.ajax({
+        type: "GET",
+        url: url,
+
+        success: function(data, status, xhr) {
+          const { resultBody } = JSON.parse(data);
+          console.log(resultBody);
+          var content = "";
+
+          if (resultBody.hasOwnProperty("records")) {
+            res = resultBody.records;
+            res.forEach((item, index) => {
+              content +=
+                "  <a href=" +
+                item.videoUrl +
+                ">\n" +
+                '  <div class="list_item">\n' +
+                '    <div class="index">\n' +
+                '      <text class="list_index">' +
+                (index + 1) +
+                "</text>\n" +
+                "   </div>\n" +
+                '    <text class="list_title">' +
+                item.videoName +
+                "</text>\n" +
+                "  </div></a>";
+            });
+          } else {
+            res = resultBody;
+
+            res.forEach((item, index) => {
+              content +=
+                "  <a href=" +
+                item.essayUrl +
+                ">\n" +
+                '  <div class="list_item">\n' +
+                '    <div class="index">\n' +
+                '      <text class="list_index">' +
+                (index + 1) +
+                "</text>\n" +
+                "   </div>\n" +
+                '<img class="img" src=' +
+                item.essayImgUrl +
+                "/>\n" +
+                '    <text class="list_title">' +
+                item.essayTitle +
+                "</text>\n" +
+                "  </div></a>";
+            });
+          }
+
+          $(".list_menu").html(content);
+        },
+        error: function(xhr, type) {
+          alert("Ajax error!");
+        }
+      });
+    </script>
+  </body>
+</html>

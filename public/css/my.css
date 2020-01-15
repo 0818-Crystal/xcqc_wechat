@@ -1,0 +1,39 @@
+body {
+  background-color: #fcfcfc;
+}
+.top {
+  padding: 2em;
+  background-color: #f7f7f7;
+  padding-left: 3em;
+  flex-direction: column;
+}
+.nickname {
+  margin-top: 1.2em;
+  /* font-size: 1.6em; */
+  color: black;
+  display: block;
+  font-family: "楷体";
+}
+.menu-list {
+  display: flex;
+  /* border: black 2px solid; */
+  flex: 0 0 45%;
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: 10px 10px 20px #c5c4c457;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+}
+.menu {
+  height: 100%;
+  padding-left: 3em;
+  padding-right: 3em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.glyphicon {
+  margin-bottom: 1em;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0,user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>学习积分</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/my.css" />
+    <link rel="stylesheet" href="/css/mark.css" />
+  </head>
+  <body>
+    <div class="top">
+      <div>
+        <img
+          src="<%= data.headimgurl%>"
+          class="img-circle"
+          style="width: 20% ;"
+        />
+        <img
+          class="qrcode"
+          src="https://wechat-1300272476.cos.ap-guangzhou.myqcloud.com/wechat/2020/01/05/63d4a904-518a-45cc-b37a-cd2166039e7c.png"
+          style="width: 30%;float:right"
+        />
+      </div>
+      <text class="nickname"><%= data.nickname%></text>
+      <text class="nickname" style="font-size: 0.8em;color:grey"
+        >当前积分为<%=marks.integralNum%></text
+      >
+    </div>
+    <div class="store">
+      <div style="margin-right: 10px;margin-left: 10px;">
+        <span
+          class="glyphicon glyphicon-shopping-cart"
+          aria-hidden="true"
+          style="color: #fff; margin-right:3px ;"
+        ></span>
+
+        <text style="color:#fff;font-size:1em;font-weight: 400;">积分商城</text>
+      </div>
+    </div>
+    <div style="margin-top: 3em;" class="intro">
+      <text
+        style="font-size: 1.2em;font-weight: 600;font-family: '黑体';margin-top: 1.2em;margin-left:3em ;"
+        >积分规则</text
+      >
+    </div>
+    <div class="mark_menu">
+      <%markData.forEach((item,index)=>{ if(item.id!=1){
+      if(userItemMark[index]==null){var mark = 0;var percent=0}else {var mark =
+      userItemMark[index];var
+      percent=100*mark/(item.integralFullNum+item.integralSubjoinNum)+'%'}%>
+      <div class="mark_item">
+        <div>
+          <text class="mark_title"> <%=item.integralTitle%> </text>
+          <a href="<%=item.integralUrl%>">
+            <div class="mark_button">
+              <%if(percent=='100%'){%> 已完成 <%}else{%> 去完成 <%}%>
+            </div></a
+          >
+        </div>
+        <text class="mark_intro">
+          <%=item.integralIntro%>
+        </text>
+        <div class="Bar" style="margin-top: 10px;">
+          <div class="Bar_in Bar" style="width:<%=percent%>"></div>
+        </div>
+        <text class="current_mark"
+          >已获得 <%=mark%> 分/最高上限
+          <%=item.integralFullNum+item.integralSubjoinNum%> 分</text
+        >
+      </div>
+      <%}})%>
+    </div>
+    <script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/mark.js"></script>
+    <script src="/js/my.js"></script>
+  </body>
+</html>
