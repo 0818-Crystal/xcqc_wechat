@@ -82,8 +82,8 @@ module.exports = () => {
         if (message.Content.match("你好")) {
           content = "你好哇~";
         }
-        if (message.Content.match("邀请人：")) {
-          code = message.Content.split("邀请人：")[1];
+        if (message.Content.match("邀请码：")) {
+          code = message.Content.split("邀请码：")[1];
           url = `${apiUrl}/integralUsersAll/yaoqing`;
           body = {
             openId: `${message.FromUserName}`,
